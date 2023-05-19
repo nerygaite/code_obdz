@@ -1,21 +1,85 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>Browse entries</title>
-    </head>
+<head>
+	<title>CYBERCORE BLOG</title>
+	<style>
+		html {
+			background: #eedfdf;
+            min-height: 100%;
+            font-family: Helvetica;
+            display: flex;
+            flex-direction: column;
+		
+		}
+		body{
+			margin: 0;
+			padding: 0 15px;
+			display: flex;
+			flex-direction: column;
+			flex: auto;
+		}
+		header {
+			background-color: #d5aeae;
+			border: 1px solid #ae8e8e;
+			color: rgb(255, 255, 255);
+			padding: 10px;
+			text-align: center;
+		}
+		
+		h1 {
+			margin: 10px;  
+		}
+		.container {
+			margin: 10px auto;
+			max-width: 800px;
+			padding: 0 20px;
+		}
+		.entry {
+			background-color: rgb(255, 255, 255);
+			border: 1px solid #ae8e8e;
+			border-radius: 5px;
+			margin: 10px 0;
+			padding: 20px;
+		}
+		.entry h2 {
+			font-size: 28px;
+			margin: 0 0 10px 0;
+		}
+		.entry p {
+			font-size: 18px;
+			margin: 0 0 20px 0;
+		}
+		.entry hr {
+			border: none;
+			border-top: 1px solid #ddd;
+			margin: 20px 0;
+		}
+	</style>
+</head>
 <body>
-    <h1>Browse entries</h1>
-    {% if entries|length > 0 %}
-        <ul>
-        {% for entry in entries %}
-            <li><b>{{ entry.title }}</b> ({{ entry.date }})
-            <p>
-            {{ entry.content }}
-            <hr>
-        {% endfor %}
-        </ul>
-    {% else %}
-        This blog is empty.<p>
-    {% endif %}
-    <a href="{{ url_for('homepage') }}">Back to homepage</a>
+	<header>
+		<h1>MY BLOG</h1>
+	</header>
+	<div class="container">
+		{% if entries|length > 0 %}
+			{% for entry in entries %}
+				<div class="entry">
+					<h2>{{ entry.title }}</h2>
+					<p>{{ entry.date }}</p>
+					<p>{{ entry.content }}</p>
+					<hr>
+				</div>
+			{% endfor %}
+		{% else %}
+			<p>This blog is empty.</p>
+		{% endif %}
+		<img src="https://play-lh.googleusercontent.com/AmKSpZt_rynhOO0ID1eS0gqeW3DFzoH6KNZkAAgepQ0t9MDRQTmil-nlY5GqkZ_7El0=w240-h480-rw"
+		alt="Мені було скучно"
+		width="200"
+		height="200"
+		alt="Иллюстрация" align="left" 
+		vspace="5" hspace="5">
+		<a href="{{ url_for('homepage') }}"> Не тицяй це, будь ласка </a>
+	</div>
 </body>
 </html>
